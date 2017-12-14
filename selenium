@@ -1,0 +1,39 @@
+require "selenium-webdriver"
+
+tik = Selenium::WebDriver.for :chrome
+
+tik.get "https://qiscus-landing-stag.herokuapp.com/dashboard/register"
+
+nama = tik.find_element :css => "input[name=name]"
+nama.send_keys "m"
+email = tik.find_element :css => "input[name=email]"
+email.send_keys "belajarsei@gmail.com"
+password = tik.find_element :css => "input[name=password]"
+password.send_keys "jogja123"
+
+pass = tik.find_element :css => "input[name=password_confirmation]"
+pass.send_keys "jogja12345"
+
+b=tik.find_element :css => "button" 
+b.click
+
+
+if tik.find_element(:css,".error")
+	
+	if nama == ("")
+	 puts "nama tidak boleh kosong "
+    else if email == ("")
+    	puts " email tidak boleh kosong"
+
+    else if  password == ("")
+    	puts " passwrd tidak boleh kosong"
+    else if  pass == ("")
+    	puts " passwrd tidak boleh kosong"
+    else  == ("")
+    	puts " passwrd tidak boleh kosong"
+
+ else
+	puts "element not found"
+end
+
+sleep(1000)
